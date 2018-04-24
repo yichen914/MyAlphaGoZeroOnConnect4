@@ -165,3 +165,21 @@ Below are some more details about my implementation. First, it executes the self
  ![24. tensorboard diagram](/images/24.%20tensorboard%20diagram.png)
 
 Hope you like this post and please provide your feedback.
+
+
+References:
+
+https://medium.com/applied-data-science/how-to-build-your-own-alphazero-ai-using-python-and-keras-7f664945c188
+
+http://tim.hibal.org/blog/alpha-zero-how-and-why-it-works/
+
+https://web.stanford.edu/~surag/posts/alphazero.html
+
+https://www.nature.com/articles/nature24270.epdf
+
+https://en.m.wikipedia.org/wiki/Connect_Four
+
+https://en.m.wikipedia.org/wiki/Monte_Carlo_tree_search
+
+https://en.m.wikipedia.org/wiki/Dirichlet_distribution
+
