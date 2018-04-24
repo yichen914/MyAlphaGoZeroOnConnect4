@@ -14,7 +14,7 @@ In computer science, Monte Carlo tree search (MCTS) is a heuristic search algori
 
 Take Connect4 (or any other discrete, deterministic games with perfect information) as example, the input of a MCTS is the current state **s\_0** of the game - the positions of the colored discs in the suspended grid. The nodes on the Monte Carlo tree are the states of the game. If it is the first time the current node is being visited, the node will be expanded by trying every possible move **a**  on the state and appending the corresponding subsequent state of each move as its children.
 
- ![mcts - expanding](./images/1. mcts - expanding.png)
+ ![mcts - expanding](/images/1.%20mcts%20-%20expanding.png)
 
 And then, the children must be valued. The value **W** is determined by randomly playing the remaining of the game from that sub state -- this is called _Rollout_. If the winner is the same player who performed the previous expanding move, **W** will be +1. Otherwise, **W** will be -1. In case of tied game, it will be 0. Since the rollout is a random play, it does not necessarily represent the optimal result.
 
