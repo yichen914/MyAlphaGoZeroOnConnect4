@@ -164,4 +164,4 @@ Below are some more details about my implementation. First, it executes the self
 
  ![24. tensorboard diagram](/images/24.%20tensorboard%20diagram.png)
 
-The complete source code and trained model can be found from my GitHub. Hope you like this post and please provide your feedback.
+Hope you like this post and please provide your feedback.
