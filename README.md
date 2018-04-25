@@ -64,7 +64,7 @@ In term of training, the actual search probabilities  **π** from the previous M
 
  ![11. policy network training label](/images/11.%20policy%20network%20training%20label.png)
 
-where **π\_s,a** represents the actual search probability of taking move **a** on state **s** , **N\_s,a** is the accumulated visit count of taking move **a** on state **s** , **N\_s,b** represents each possible move **b** on state **s**. Apparently, **π** is the proportion of the visit count. Since this is more like a classification task, the categorical cross entropy loss function can be used for training this network.
+where **π\_s,a** represents the actual search probability of taking move **a** on state **s** , **N\_s,a** is the accumulated visit count of taking move **a** on state **s** , **s,b** represents each possible move **b** on state **s**. Apparently, **π** is the proportion of the visit count. Since this is more like a classification task, the categorical cross entropy loss function can be used for training this network.
 
  ![12. policy network loss](/images/12.%20policy%20network%20loss.png)
 
@@ -142,17 +142,17 @@ However, above is just a simplified version for the sake of clarity. The actual 
 
  ![22. policy network real training label](/images/22.%20policy%20network%20real%20training%20label.png)
 
-whereτ is the temperature which controls the degree of exploration. The higher the temperature the wider the exploration, meaning every move may get a chance to be selected for tree exploration. When it is cool down (τ -&gt; 0), only the move with the most visit count will be selected. The temperature should be high (=1) for the first several turns of moves as there are more uncertainties at the beginning of the game. And then, it should be an infinitesimal value in order to select the &#39;best&#39; move leading to the victory.
+where **τ** is the temperature which controls the degree of exploration. The higher the temperature the wider the exploration, meaning every move may get a chance to be selected for tree exploration. When it is cool down (**τ** -&gt; 0), only the move with the most visit count will be selected. The temperature should be high (=1) for the first several turns of moves as there are more uncertainties at the beginning of the game. And then, it should be an infinitesimal value in order to select the &#39;best&#39; move leading to the victory.
 
-- DirichletNoise
+- Dirichlet Noise
 
 Dirichlet Noise has also been added onto the predicted probabilities of the root node (only) to introduce additional exploration in MCTS:
 
  ![23. dirichlet noise](/images/23.%20dirichlet%20noise.png)
 
-ε=0.25 makes sure that the Dirichlet Noise only affects a small portion (25%) of the probabilities.
+**ε**=0.25 makes sure that the Dirichlet Noise only affects a small portion (25%) of the probabilities.
 
-Dir(α) is the function of (Symmetric) Dirichlet Distribution, which can be considered as the probabilities of the (prior) probabilities. α is an array containing the parameters called Concentration Parameter. The larger the value of the concentration parameter, the more evenly distributed is the resulting distribution. The smaller the value of the concentration parameter, the more sparsely distributed is the resulting distribution, that is, the distribution more tends to concentrate on a single point. The values of the Concentration Parameter for the probabilities of all moves are same, because there is no prior knowledge favoring one move over another. The value of the Concentration Parameter should be scaled in inverse proportion to the approximate number of valid moves in a typical state. As many valid moves as Go, this parameter is about 0.03. In term of Connect4, a value around 0.8 should be alright.
+**Dir(α)** is the function of (Symmetric) Dirichlet Distribution, which can be considered as the probabilities of the (prior) probabilities. **α** is an array containing the parameters called Concentration Parameter. The larger the value of the concentration parameter, the more evenly distributed is the resulting distribution. The smaller the value of the concentration parameter, the more sparsely distributed is the resulting distribution, that is, the distribution more tends to concentrate on a single point. The values of the Concentration Parameter for the probabilities of all moves are same, because there is no prior knowledge favoring one move over another. The value of the Concentration Parameter should be scaled in inverse proportion to the approximate number of valid moves in a typical state. As many valid moves as Go, this parameter is about 0.03. In term of Connect4, a value around 0.8 should be alright.
 
 **My Implementation on Connect4**
 
